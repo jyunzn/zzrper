@@ -9,5 +9,8 @@ zz({
 }).mount('.container')
 
 zz({
-  cmz_quan: 12
+  cmz_quan: 12,
+  zzrp: true,
+  zzrp_cmz_initSelectStart: '2020-11-1',
+  zzrp_cmz_initSelectEnd: '2020-12-03'
 }).mount('.container2')
