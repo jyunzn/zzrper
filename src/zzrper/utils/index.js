@@ -26,7 +26,6 @@ export const getDateInfo = dObj => {
 }
 
 export function judgeDateStatus(baseDateObj, dateObj) {
-  console.log(baseDateObj, dateObj)
   const { year: by, month: bm, date: bd } = baseDateObj
   const { year: y, month: m, date: d } = dateObj
 
@@ -37,23 +36,6 @@ export function judgeDateStatus(baseDateObj, dateObj) {
   } else {
     return 1 // 右邊
   }
-}
-
-export function initClass(options, dCls) {
-  const clsObj = {}
-  for (let clsKey in dCls) {
-    let cls = options[clsKey]
-    if (cls !== undefined) {
-      if (typeof cls !== 'string') {
-        cls = dCls[clsKey]
-      }
-      delete options[clsKey]
-    } else {
-      cls = dCls[clsKey]
-    }
-    clsObj[clsKey] = cls ? cls.split(' ') : []
-  }
-  return clsObj
 }
 
 export function deepcopy(target) {
@@ -72,5 +54,61 @@ export function deepcopy(target) {
     return arr
   } else {
     return target
+  }
+}
+
+function isLeapYear(year) {
+  return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)
+}
+
+const getDays = (year, month) => {
+  const day30 = [4, 6, 8, 9, 11];
+  const day31 = [1, 3, 5, 7, 8, 10, 12];
+  let days =
+    day31.includes(month) ? 31 :
+      day30.includes(month) ? 30 :
+        isLeapYear(year) ? 29 : 28;
+
+  return days
+}
+
+/**
+ * @cur { year, month, date }
+ * @param { selectData } { start: { cur }, end: { cur } }
+ * @param { points } { pL: { year, month }, pR: { year, month }}
+ * @return { object } { lcs, lce, rcs, rce },
+ *    l => point left,
+ *    r => point right,
+ *    cs => current select start
+ *    ce => current select end
+ */
+export function judgeCurPosition(selectData, points) {
+  const { start: { cur: cs }, end: { cur: ce } } = selectData
+  const { pL, pR } = points
+
+  const l = { ...pL, date: 1 }
+  const r = { ...pR, date: getDays(pR.year, pR.month) }
+
+  const lcs = judgeDateStatus(l, cs)
+  const lce = judgeDateStatus(l, ce)
+  const rcs = judgeDateStatus(r, cs)
+  const rce = judgeDateStatus(r, ce)
+
+  return { lcs, lce, rcs, rce }
+}
+
+export const addClass = (dom, cls) => {
+  if (!isArr(cls)) return false
+  for (let i = 0; i < cls.length; i++) {
+    const clsname = cls[i]
+    dom.classList.add(clsname)
+  }
+}
+
+export const removeClass = (dom, cls) => {
+  if (!isArr(cls)) return false
+  for (let i = 0; i < cls.length; i++) {
+    const clsname = cls[i]
+    dom.classList.remove(clsname)
   }
 }
