@@ -1,4 +1,4 @@
-import { dateStrToDateObj, getDateInfo, judgeDateStatus, initClass, deepcopy, isFunc } from '../../utils'
+import { dateStrToDateObj, getDateInfo, judgeDateStatus, deepcopy, isFunc } from '../../utils'
 import { dClass, dCbs } from './default'
 
 function getZZRPSetting(opts) {
@@ -46,6 +46,23 @@ function initSelectDates(options) {
   }
 
   return { start, end }
+}
+
+function initClass(options, dCls) {
+  const clsObj = {}
+  for (let clsKey in dCls) {
+    let cls = options[clsKey]
+    if (cls !== undefined) {
+      if (typeof cls !== 'string') {
+        cls = dCls[clsKey]
+      }
+      delete options[clsKey]
+    } else {
+      cls = dCls[clsKey]
+    }
+    clsObj[clsKey] = cls ? cls.split(' ') : []
+  }
+  return clsObj
 }
 
 function initCallback(cbObj, cbs, del) {

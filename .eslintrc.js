@@ -27,11 +27,13 @@ module.exports = {
     'no-self-compare': 0,
     'no-nested-ternary': 0,
     'no-cond-assign': 0,
+    'no-lonely-if': 0,
     'operator-linebreak': [2, 'after'],
     'object-curly-newline': 0,
     'object-property-newline': 0,
     'prefer-template': 0,
     'prefer-const': 0,
     semi: 0,
+    'max-len': 0
   },
 };
