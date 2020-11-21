@@ -25,16 +25,26 @@ export const getDateInfo = dObj => {
   return { year, month, date }
 }
 
+/**
+ * @description
+ *    Use baseDateObj as a benchmark to compare the relative position of dateObj
+ * @param {object} { year, month, date }
+ * @param {object} { year, month, date }
+ * @return {enum}
+ *    -1: before
+ *    0:  the same day
+ *    1:  future
+ */
 export function judgeDateStatus(baseDateObj, dateObj) {
   const { year: by, month: bm, date: bd } = baseDateObj
   const { year: y, month: m, date: d } = dateObj
 
   if ((y < by) || (y === by && m < bm) || (y === by && m === bm && d < bd)) {
-    return -1 // 左邊
+    return -1
   } else if (y === by && m === bm && d === bd) {
-    return 0 // 中間
+    return 0
   } else {
-    return 1 // 右邊
+    return 1
   }
 }
 

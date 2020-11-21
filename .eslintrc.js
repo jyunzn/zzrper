@@ -28,6 +28,7 @@ module.exports = {
     'no-nested-ternary': 0,
     'no-cond-assign': 0,
     'no-lonely-if': 0,
+    'no-multi-spaces': 0,
     'operator-linebreak': [2, 'after'],
     'object-curly-newline': 0,
     'object-property-newline': 0,
