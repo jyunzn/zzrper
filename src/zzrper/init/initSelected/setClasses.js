@@ -1,6 +1,6 @@
 import { addClass } from '../../utils'
 
-function handleInRangeCurMonthCls(curMonthInRange, cls_inRange) {
+export function handleInRangeCurMonthCls(curMonthInRange, cls_inRange) {
   curMonthInRange && curMonthInRange.forEach(dom => addClass(dom, cls_inRange))
 }
 

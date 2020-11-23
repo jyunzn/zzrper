@@ -21,7 +21,9 @@ module.exports = {
         'test',
         // my-cmz
         'merge', // merge branch
-        'dev'    // development process
+        'dev',   // development process
+        'ver',   // update version number
+        'conf'   // update config file
       ]
     ]
   }

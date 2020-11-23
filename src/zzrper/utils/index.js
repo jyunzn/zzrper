@@ -71,7 +71,7 @@ function isLeapYear(year) {
   return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0)
 }
 
-const getDays = (year, month) => {
+export const getDays = (year, month) => {
   const day30 = [4, 6, 8, 9, 11];
   const day31 = [1, 3, 5, 7, 8, 10, 12];
   let days =
