@@ -36,6 +36,7 @@ module.exports = {
     'prefer-template': 0,
     'prefer-const': 0,
     semi: 0,
-    'max-len': 0
+    'max-len': 0,
+    'prefer-arrow-callback': 0
   },
 };

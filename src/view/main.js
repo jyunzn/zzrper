@@ -7,6 +7,13 @@ import './style/style.scss'
 zz.use(zzrper)
 
 zz({
+  zzrp: true,
+  zzrp_onSelectStart(...args) {
+    console.log('start: ', ...args)
+  },
+  zzrp_onSelectEnd(...args) {
+    console.log('end:', ...args)
+  }
 }).mount('.container')
 
 zz({
@@ -20,6 +27,12 @@ zz({
   // eslint-disable-next-line
   cmz_mNames: { 1: 1, 2: 2, 3: 3, 4: 4, 5: 5, 6: 6, 7: 7, 8:8, 9:9, 10:10, 11:11, 12:12 },
   zzrp: true,
-  zzrp_cmz_initSelectStart: '2021-11-01',
-  zzrp_cmz_initSelectEnd: '2022-11-30'
+  // zzrp_cmz_initSelectStart: '2020-12-05',
+  // zzrp_cmz_initSelectEnd: '2021-02-04'
+  zzrp_onSelectStart(...args) {
+    console.log('start: ', ...args)
+  },
+  zzrp_onSelectEnd(...args) {
+    console.log('end:', ...args)
+  }
 }).mount('.container2')

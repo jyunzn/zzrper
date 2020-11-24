@@ -23,5 +23,5 @@ export function handleInitSeleted(datas, opts) {
     setClasses(doms, cls, ymDs, selectDate)
     drawInfo = getDrawInfo(ymDs, selectDate, doms)
   }
-  return drawInfo
+  datas.opts.zzrp.draw = drawInfo
 }
