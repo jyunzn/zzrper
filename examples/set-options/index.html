@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- import zz -->
+  <link href="https://cdn.jsdelivr.net/gh/jyunzn/zz@0.0.0-alpha.3/examples/default.min.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/@jyunzn/zz"></script>
+
+  <!-- set style -->
+  <link href="./style.min.css" rel="stylesheet"/>
+
+  <!-- import zzrper -->
+  <script src="../../dist/zzrper.min.js"></script>
+</head>
+<body>
+  <div class="container"></div>
+  <script>
+    zz.use(zzrper)
+    zz({
+      zzrp: true,
+      // set init select date
+      zzrp_cmz_initSelectStart: '2020-11-05',
+      zzrp_cmz_initSelectEnd: '2021-02-04',
+
+      // set custom class name
+      zzrp_cls_selectStart: 'start',
+      zzrp_cls_selectEnd: 'end',
+      zzrp_cls_inRange: 'inrange red',
+
+      // set event
+      zzrp_onSelectStart(...args) {
+        console.log('start: ', ...args)
+      },
+      zzrp_onSelectEnd(...args) {
+        console.log('end:', ...args)
+      }
+    }).mount('.container')
+  </script>
+</body>
+</html>
