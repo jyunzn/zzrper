@@ -190,6 +190,8 @@ function handleSwitchClick(zzOpt, zzrpOpt) {
 
   // judge has select date
   if (cs && ce) {
+    // - setting both
+
     // Get the data of the newly generated month
     const nextPoint = { pL: nextYM, pR: nextYM }
     const nextPos = judgeCurPosition(selectDate, nextPoint)
@@ -199,11 +201,15 @@ function handleSwitchClick(zzOpt, zzrpOpt) {
     // Get data for the removed month
     const drawed = getBeforeYMDrawInfo(beforeYM, draw)
 
-    // 取出 ing 的 start end { 20xx { x: xx}} => { start, end }
+    // Take out the start and end of ing
     const addInRange = drawing.inRange
     addInRange && (drawing.inRange = getInRangeSE(nextYM, addInRange))
+
+    // Classes for handling removed months and added months
     handleClasses(drawing, drawed, zzOpt, zzrpOpt)
   } else if (cs) {
+    // - just setting start
+
     const { year, month, date } = cs
     const { year: by, month: bm } = beforeYM
     const { year: ny, month: nm } = nextYM
@@ -222,7 +228,6 @@ function handleSwitchClick(zzOpt, zzrpOpt) {
 export function onBeforeDomBeAssyAtResetDom(datas) {
   const { zzrp } = datas.opts
   if (zzrp) {
-    // 處理移出的月份跟移入月份是否在範圍內，有的話就要著色
     handleSwitchClick(datas, zzrp)
   }
 }

@@ -1,4 +1,4 @@
-import { dateStrToDateObj, getDateInfo, judgeDateStatus, deepcopy, isFunc } from '../../utils'
+import { dateStrToDateObj, getDateInfo, deepcopy, isFunc, isDateMisplaced } from '../../utils'
 import { dClass, dCbs } from './default'
 
 function getZZRPSetting(opts) {
@@ -12,7 +12,7 @@ function getZZRPSetting(opts) {
   return set
 }
 
-function initSelectDate(options, key) {
+function getSelectDate(options, key) {
   const cmz_initSelectDate = options[key]
   let dateObj
   if (cmz_initSelectDate) {
@@ -30,25 +30,21 @@ function initSelectDate(options, key) {
   return { cur, init }
 }
 
-function initSelectDates(options) {
-  let start = initSelectDate(options, 'cmz_initSelectStart');
-  let end = initSelectDate(options, 'cmz_initSelectEnd');
-  let { init: sInit } = start
-  let { init: eInit } = end
+function getSelectDates(options) {
+  let start = getSelectDate(options, 'cmz_initSelectStart');
+  let end = getSelectDate(options, 'cmz_initSelectEnd');
 
-  if (sInit === null && eInit !== null) {
+  let { cur: sInit } = start
+  let { cur: eInit } = end
+
+  if (isDateMisplaced(sInit, eInit)) {
     [start, end] = [end, start]
-  } else if (sInit !== null && eInit !== null) {
-    const status = judgeDateStatus(sInit, eInit)
-    if (status === -1) {
-      [start, end] = [end, start]
-    }
   }
 
   return { start, end }
 }
 
-function initClass(options, dCls) {
+function getClass(options, dCls) {
   const clsObj = {}
   for (let clsKey in dCls) {
     let cls = options[clsKey]
@@ -65,7 +61,7 @@ function initClass(options, dCls) {
   return clsObj
 }
 
-function initCallback(cbObj, cbs, del) {
+function getCallback(cbObj, cbs, del) {
   for (let key in cbs) {
     const cbArr = cbs[key]
     const cb = cbObj[key]
@@ -80,18 +76,18 @@ function initCallback(cbObj, cbs, del) {
   }
 }
 
-function initCallbacks(options) {
+function getCallbacks(options) {
   const cbs = deepcopy(dCbs)
-  initCallback(options, cbs, true)
+  getCallback(options, cbs, true)
   return cbs
 }
 
 export function initOpts(opts) {
   opts.zzrp = {}
   const zzrpSetting = getZZRPSetting(opts)
-  const selectDate = initSelectDates(zzrpSetting)
-  const cls = initClass(zzrpSetting, dClass)
-  const cbs = initCallbacks(zzrpSetting)
+  const selectDate = getSelectDates(zzrpSetting)
+  const cls = getClass(zzrpSetting, dClass)
+  const cbs = getCallbacks(zzrpSetting)
   opts.zzrp.selectDate = selectDate
   opts.zzrp.cls = cls
   return { selectDate, cls, cbs }
