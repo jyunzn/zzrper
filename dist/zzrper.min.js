@@ -1,5 +1,5 @@
 /*!
- * zzrper v0.0.1
+ * zzrper v0.0.2
  * (c) 2020 Jyunzn
  * Released under the MIT License
  */
