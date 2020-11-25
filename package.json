@@ -1,6 +1,6 @@
 {
   "name": "@jyunzn/zzrper",
-  "version": "0.0.0-alpha.0",
+  "version": "0.0.1",
   "description": "This is @jyunzn/zz's plugin to picker range date",
   "main": "dist/zzrper.min.js",
   "jsdelivr": "dist/zzrper.min.js",
