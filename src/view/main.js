@@ -29,9 +29,9 @@ zz({
   zzrp: true,
   zzrp_cmz_initSelectStart: '2020-12-05',
   zzrp_cmz_initSelectEnd: '2011-02-04',
-  zzrp_cls_selectStart: 's a b',
-  zzrp_cls_selectEnd: 'e',
-  zzrp_cls_inRange: 'i',
+  // zzrp_cls_selectStart: 's a b',
+  // zzrp_cls_selectEnd: 'e',
+  // zzrp_cls_inRange: 'i',
   zzrp_onSelectStart(...args) {
     console.log('start: ', ...args)
   },

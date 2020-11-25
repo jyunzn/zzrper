@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAAA,mCAAqC,CACnC,UAAU,CAAE,OAAO,CAGrB,cAAe,CACb,UAAU,CAAC,OAAO",
+"sources": ["../src/view/style/_selected.scss"],
+"names": [],
+"file": "default.min.css"
+}

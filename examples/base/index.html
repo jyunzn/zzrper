@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <!-- import zz -->
+  <link href="https://cdn.jsdelivr.net/gh/jyunzn/zz@0.0.0-alpha.3/examples/default.min.css" rel="stylesheet"/>
+  <script src="https://unpkg.com/@jyunzn/zz"></script>
+
+  <!-- set style -->
+  <link href="../default.min.css" rel="stylesheet"/>
+  <link href="./style.min.css" rel="stylesheet"/>
+
+  <!-- import zzrper -->
+  <script src="../../dist/zzrper.min.js"></script>
+</head>
+<body>
+  <div class="container"></div>
+  <script>
+    zz.use(zzrper)
+    zz({
+      zzrp: true
+    }).mount('.container')
+  </script>
+</body>
+</html>
